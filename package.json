@@ -1,0 +1,22 @@
+{
+  "name": "@maaax/utils",
+  "version": "1.0.17",
+  "description": "Collection of utility functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maximilianberndt/utils.git"
+  },
+  "keywords": [
+    "utility"
+  ],
+  "author": "Maximilian Berndt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maximilianberndt/utils/issues"
+  },
+  "homepage": "https://github.com/maximilianberndt/utils#readme"
+}
