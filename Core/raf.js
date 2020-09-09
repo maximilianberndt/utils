@@ -1,6 +1,3 @@
-const rand = reqire('../Math/rand');
-
-
 module.exports = {
 	_data: {
 		raf: undefined,
@@ -14,7 +11,7 @@ module.exports = {
 		if (!fn) return
 
 		let newFn = {
-			id: Math.round(rand(1, 99999999)),
+			id: Math.round(require('../Math/rand')(1, 99999999)),
 			fn
 		}
 

@@ -1,3 +1,3 @@
-module.exports = function (v, a, z) {
+module.exports = (v, a, z) => {
 	return Math.min(Math.max(v, a), z);
 }

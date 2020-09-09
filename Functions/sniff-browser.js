@@ -1,17 +1,24 @@
-module.exports = function () {
-	let sBrowser, sUsrAg = navigator.userAgent;
+module.exports = () => {
+	let sUsrAg = navigator.userAgent;
+	let isChrome, isSafari, isOpera, isFirefox, isMicrosoft = false
 
 	if (sUsrAg.indexOf("Chrome") > -1) {
-		sBrowser = "isChrome"
-	} else if (sUsrAg.indexOf("Safari") > -1) {
-		sBrowser = "isSafari"
+		isChrome = true
+	}else if (sUsrAg.indexOf("Safari") > -1) {
+		isSafari = true
 	} else if (sUsrAg.indexOf("Opera") > -1) {
-		sBrowser = "isOpera"
-	} else if (sUsrAg.indexOf("Firefox") > -1) {
-		sBrowser = "isFirefox"
+		isOpera = true
+	}else if (sUsrAg.indexOf("Firefox") > -1) {
+		isFirefox = true
 	} else if (sUsrAg.indexOf("MSIE") > -1) {
-		sBrowser = "isMicrosoft"
+		isMicrosoft = true
 	}
 
-	return sBrowser
+	return {
+		isChrome, 
+		isSafari, 
+		isOpera, 
+		isFirefox, 
+		isMicrosoft
+	}
 }

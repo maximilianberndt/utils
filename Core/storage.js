@@ -1,9 +1,6 @@
-const browser = reqire('../Functions/sniff-browser');
-const isMobile = reqire('../Functions/sniff-mobile');
-
 module.exports = {
-	browser,
-	isMobile,
+	browser: require("../Functions/sniff-browser")(),
+	isMobile: require("../Functions/sniff-mobile")(),
 	width: window.innerWidth,
 	height: window.innerHeight,
 }
