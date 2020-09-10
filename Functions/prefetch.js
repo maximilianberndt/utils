@@ -1,20 +1,23 @@
 // Prefetch subsequent pages
+// TODO: Dom parse and select preload critical images
 
 module.exports = (links, prefetchMethod) => {
-	
+
 	const supportedPrefetchStrategy = (support('prefetch') && prefetchMethod == "prefetch")
 		? linkPrefetchStrategy
 		: xhrPrefetchStrategy;
 
+	const linksL = links.length;
+
 	requestIdleCallback(() => {
-		links.forEach(entry => {
-			prefetch(entry)
-		});
+		for(let i = 0; i < linksL; i++) {
+			prefetch(links[i])
+		}
 	}, { timeout: 23 });
 
 	/** prefetches a resource by using link[rel="prefetch"]
-* It creates a link element and appends attributes: rel="prefetch" and href with the url param as the value.
-*/
+	* It creates a link element and appends attributes: rel="prefetch" and href with the url param as the value.
+	*/
 	function linkPrefetchStrategy(url) {
 		return new Promise((resolve, reject) => {
 			const link = document.createElement(`link`);
@@ -35,6 +38,7 @@ module.exports = (links, prefetchMethod) => {
 				if (req.status === 200) {
 					let response = req.response
 
+					// TODO: Dom parse and select preload critical images
 					console.log(response)
 
 					resolve()

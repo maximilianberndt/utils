@@ -15,68 +15,72 @@
 *
 *	// Returns current mouse Position
 *	// { x: 23, y: 234 }
-*	Mouse.pos
+*	Mouse.getPos
 *
 *************************************/
 
-// import { utils } from "../utils/main.js"
+const bind = require("../Functions/bind");
 
-// export const Mouse = {
-// 	pos: {
-// 		x: 0,
-// 		y: 0
-// 	},
-// 	last: {
-// 		x: 0,
-// 		y: 0
-// 	},
-// 	speed: 0,
+module.exports = {
+	pos: {
+		x: 0,
+		y: 0
+	},
+	last: {
+		x: 0,
+		y: 0
+	},
+	speed: 0,
 
-// 	_data: {
-// 		speedFn: null,
-// 		ease: 0.2,
-// 		isActive: false,
-// 	},
+	_data: {
+		speedFn: null,
+		ease: 0.2,
+		isActive: false,
+	},
 
-// 	start: function (speed, ease) {
+	getPos() {
+		return this.pos
+	},
 
-// 		if (this._data.isActive) return
+	getSpeed() {
+		return this.speed
+	},
 
-// 		this._data.ease = ease || 0.2;
+	start: function (speed, ease) {
+		if (this._data.isActive) return
 
-// 		utils.bind(this, ['_setPos', '_calcSpeed']);
+		this._data.ease = ease || 0.2;
 
-// 		document.addEventListener("mousemove", this._setPos)
+		bind(this, ['_setPos', '_calcSpeed', 'getSpeed', 'getPos']);
 
-// 		if (speed) this._data.speedFn = raf.add(this._calcSpeed);
-// 	},
+		document.addEventListener("mousemove", this._setPos)
 
-// 	stop: function () {
-// 		if (!this._data.isActive) return
+		if (speed) this._data.speedFn = raf.add(this._calcSpeed);
+	},
 
-// 		document.removeEventListener("mousemove", this._setPos)
+	stop: function () {
+		if (!this._data.isActive) return
 
-// 		// Reomve _calcSpeed from rendern queue
-// 		if (this._data.speedFn) this._data.speedFn = raf.remove(this._data.speedFn);
+		document.removeEventListener("mousemove", this._setPos)
 
-// 		// Reset ease
-// 		this._data.ease = 0.2;
-// 	},
+		// Reomve _calcSpeed from rendern queue
+		if (this._data.speedFn) this._data.speedFn = raf.remove(this._data.speedFn);
+	},
 
-// 	_setPos: function () {
-// 		this.pos = {
-// 			x: event.clientX,
-// 			y: event.clientY
-// 		}
-// 	},
+	_setPos: function () {
+		this.pos = {
+			x: event.clientX,
+			y: event.clientY
+		}
+	},
 
-// 	_calcSpeed: function () {
-// 		this.last.x = M.lerp(this.last.x, this.pos.x, this._data.ease);
-// 		this.last.y = M.lerp(this.last.y, this.pos.y, this._data.ease);
+	_calcSpeed: function () {
+		this.last.x = M.lerp(this.last.x, this.pos.x, this._data.ease);
+		this.last.y = M.lerp(this.last.y, this.pos.y, this._data.ease);
 
-// 		if (this.last.x < .1) this.last.x = 0;
-// 		if (this.last.y < .1) this.last.y = 0;
+		if (this.last.x < .1) this.last.x = 0;
+		if (this.last.y < .1) this.last.y = 0;
 
-// 		this.speed = (this.pos.x - this.last.x + this.pos.y - this.last.y) / 2;
-// 	}
-// }
+		this.speed = (this.pos.x - this.last.x + this.pos.y - this.last.y) / 2;
+	}
+}

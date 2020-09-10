@@ -1,8 +1,8 @@
 // Core
-// const io = require('./Core/io')
-// const Mouse = require('./Core/MouseObserver')
+const io = require('./Core/io')
+const mouse = require('./Core/MouseObserver')
 const raf = require('./Core/raf')
-// const Scroll = require('./Core/ScrollObserver')
+const scroll = require('./Core/ScrollObserver')
 const storage = require('./Core/storage')
 
 // Functions
@@ -10,7 +10,7 @@ const bind = require('./Functions/bind')
 const debounce = require('./Functions/debounce')
 const getPerformance = require('./Functions/get-performance')
 // const lazy = require('./Functions/lazy')
-// const prefetch = require('./Functions/prefetch')
+const prefetch = require('./Functions/prefetch')
 const sniffBrowser = require('./Functions/sniff-browser')
 const sniffMobile = require('./Functions/sniff-mobile')
 
@@ -23,19 +23,21 @@ const rand = require('./Math/rand')
 const smoothstep = require('./Math/smoothstep')
 
 // Workers
-const loadWorker = require('./Workers/load-worker')
-const offlineWorker = require('./Workers/offline-worker')
+// const lazyWorker = require('./Workers/lazy-worker')
+// const offlineWorker = require('./Workers/offline-worker')
 
 exports.utils = {
-	// io,
+	io,
+	mouse,
 	raf,
+	scroll,
 	storage,
 
 	bind,
 	debounce,
 	getPerformance,
 	// lazy,
-	// prefetch,
+	prefetch,
 	sniffBrowser,
 	sniffMobile,
 
@@ -45,4 +47,7 @@ exports.utils = {
 	map,
 	rand,
 	smoothstep,
+
+	// lazyWorker,
+	// offlineWorker
 }

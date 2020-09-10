@@ -18,63 +18,72 @@
 *
 *************************************/
 
-// import { utils } from "../utils/main.js"
+const bind = require("../Functions/bind");
 
-// export const Scroll = {
-// 	pos: 0,
-// 	last: 0,
-// 	speed: 0,
-// 	percent: 0, //Value between 0 - 1 
+module.exports = {
+	pos: 0,
+	last: 0,
+	speed: 0,
+	percent: 0, //Value between 0 - 1 
 
-// 	_data: {
-// 		speedFn: null,
-// 		ease: 0.2,
-// 		isActive: false,
-// 		max: Number(document.body.clientHeight) - Number(document.documentElement.clientHeight)
-// 	},
+	_data: {
+		speedFn: null,
+		ease: 0.2,
+		isActive: false,
+		max: Number(document.body.clientHeight) - Number(document.documentElement.clientHeight)
+	},
 
-// 	start: function (speed, ease) {
-// 		if (this._data.isActive) return
+	getPos() {
+		return this.pos;
+	},
+	
+	getPercent() {
+		return this.percent;
+	},
 
-// 		// Add csutom ease or 0.2 ease
-// 		this._data.ease = ease || 0.2;
+	getSpeed() {
+		return this.speed;
+	},
 
-// 		// Bind functions and register event listeners
-// 		utils.bind(this, ['_setScroll', '_calcSpeed', '_calcPercent']);
-// 		window.addEventListener("scroll", this._setScroll, false);
+	start: function (speed, ease) {
+		if (this._data.isActive) return
 
-// 		// OPTIONAL: Calculate Scroll speed
-// 		if (speed) this._data.speedFn = utils.raf.add(this._calcSpeed);
-// 	},
+		// Add csutom ease or 0.2 ease
+		this._data.ease = ease || 0.2;
 
-// 	stop: function () {
-// 		if (!this._data.isActive) return
+		// Bind functions and register event listeners
+		utils.bind(this, ['_setScroll', '_calcSpeed', '_calcPercent', 'getPos', 'getPercent', 'getSpeed', ]);
+		window.addEventListener("scroll", this._setScroll, false);
 
-// 		// Reomve event listener
-// 		window.removeEventListener("scroll", this._setScroll, false);
+		// OPTIONAL: Calculate Scroll speed
+		if (speed) this._data.speedFn = utils.raf.add(this._calcSpeed);
+	},
 
-// 		// Reomve _calcSpeed from rendern queue
-// 		if (this._data.speedFn) this._data.speedFn = utils.raf.remove(this._data.speedFn);
+	stop: function () {
+		if (!this._data.isActive) return
 
-// 		// Reset ease
-// 		this._data.ease = 0.2;
-// 	},
+		// Reomve event listener
+		window.removeEventListener("scroll", this._setScroll, false);
 
-// 	_setScroll: function () {
-// 		this.pos = window.scrollY;
-// 		this._calcPercent();
-// 	},
+		// Reomve _calcSpeed from rendern queue
+		if (this._data.speedFn) this._data.speedFn = utils.raf.remove(this._data.speedFn);
+	},
 
-// 	_calcSpeed: function () {
-// 		this.last = utils.lerp(this.last, this.pos, this._data.ease)
-// 		if (this.last < .1) this.last = 0;
+	_setScroll: function () {
+		this.pos = window.scrollY;
+		this._calcPercent();
+	},
 
-// 		this.speed = this.pos - this.last;
-// 	},
+	_calcSpeed: function () {
+		this.last = utils.lerp(this.last, this.pos, this._data.ease)
+		if (this.last < .1) this.last = 0;
 
-// 	_calcPercent: function () {
-// 		let pct = this.pos / this._data.max;
-// 		pct = pct.toFixed(4);
-// 		this.percent = Number(pct);
-// 	}
-// }
+		this.speed = this.pos - this.last;
+	},
+
+	_calcPercent: function () {
+		let pct = this.pos / this._data.max;
+		pct = pct.toFixed(4);
+		this.percent = Number(pct);
+	}
+}
