@@ -13,9 +13,7 @@ module.exports = () => {
 		return end - start
 	}
 
-	if (!browser.isMicrosoft) {
-		performance = require("../Math/map")((getPerfs(), 0, 22, 3, 0));
-	}
+	if (!browser.isMicrosoft) performance = require("../Math/map")((getPerfs(), 0, 22, 3, 0))
 
 	return Math.round(performance)
 }
