@@ -20,6 +20,7 @@ const dist = require('./Math/dist')
 const lerp = require('./Math/lerp')
 const map = require('./Math/map')
 const rand = require('./Math/rand')
+const round = require('./Math/round')
 const smoothstep = require('./Math/smoothstep')
 
 // Workers
@@ -46,6 +47,7 @@ exports.utils = {
 	lerp,
 	map,
 	rand,
+	round,
 	smoothstep,
 
 	// lazyWorker,
