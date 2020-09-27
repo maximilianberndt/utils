@@ -5,11 +5,11 @@ Collection of utility functions
 ## Core
 
 
-###### io:
-###### mouse:
+#### io:
+#### mouse:
 
 
-###### raf: Central request animation frame loop, that starts and cancels itself.
+#### raf: Central request animation frame loop, that starts and cancels itself.
 
 ```
 // Add function to raf
@@ -23,11 +23,11 @@ utils.raf.remove(rafId)
 utils.raf.stop();
 ```
 
-###### scroll:
-###### storage:
+#### scroll:
+#### storage:
 
 ## Functions
-###### bind: Sets scope of functions
+#### bind: Sets scope of functions
 ```
 let fn1 = () => { console.log("hello") }
 let fn2 = () => { console.log("sup") }
@@ -35,44 +35,44 @@ let fn2 = () => { console.log("sup") }
 utils.bind(this, ["fn1", "fn2"])
 ```
 
-###### debounce: Will only trigger function when it has not been invoked in given timeframe
+#### debounce: Will only trigger function when it has not been invoked in given timeframe
 ```
 let onResize = () => { console.log(window.innerWidth) }
 document.addEventListener("resize", utils.debounce(onResize, 250))
 ```
 
 
-###### getPerformance: Returns a value between 0 and 3 that represents the performance (higher is better)
+#### getPerformance: Returns a value between 0 and 3 that represents the performance (higher is better)
 ```
 let perf = utils.getPerformance // 0, 1 , 2 or 3
 ```
 
 
-###### prefetch: Prefectch a page, waits until the main thread is idle
+#### prefetch: Prefectch a page, waits until the main thread is idle
 ```
 utils.prefetch(["/about.html", "/contact.html"])
 ```
 
-###### sniffBrowser: Returns object with booleans for browsers
+#### sniffBrowser: Returns object with booleans for browsers
 ```
 utils.sniffBrowser()
 ```
 
-###### sniffMobile: Returns true or false when on mobile device
+#### sniffMobile: Returns true or false when on mobile device
 ```
 utils.sniffMobile() === true or false
 ```
 
 ## Math
 
-###### clamp: Clamps a value between an upper and lower bound.
+#### clamp: Clamps a value between an upper and lower bound.
 
 ```
 let value = 100;
 clamp(value, 0, 10) // 10
 ```
 
-###### dist: Distance between two points.
+#### dist: Distance between two points.
 
 ```
 let pos1 = {
@@ -88,23 +88,23 @@ let pos2 = {
 dist(pos1.x, pos2.x, pos1.x, pos2.x) // 10
 ```
 
-###### lerp: Linear interpolation between two known points.
+#### lerp: Linear interpolation between two known points.
 ```
 let value = 10;
 
 lerp(value, 50, 0.4) //
 ```
 
-###### map: Re-maps a number from one range to another.
+#### map: Re-maps a number from one range to another.
 ```
 let value = 5;
 
 map(value, 0, 10, 3, 7) //
 ```
 
-###### rand: Returns a random number in a given range.
+#### rand: Returns a random number in a given range.
 ```
 let value = utils.rand(0, 100)
 ```
 
-###### smoothstep: Clamp with smooth edges
+#### smoothstep: Clamp with smooth edges
