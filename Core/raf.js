@@ -60,8 +60,7 @@ module.exports = {
 
 	render: function () {
 		// Execute all functions
-		let i = this.renderQueue;
-		for (i - 1; i >= 0; i--) {
+		for (let i = this.renderQueueL - 1; i >= 0; i--) {
 			this.renderQueue[i].fn()
 		}
 

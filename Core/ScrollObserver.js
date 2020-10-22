@@ -18,8 +18,6 @@
 *
 *************************************/
 
-const bind = require("../Functions/bind");
-
 module.exports = {
 	pos: 0,
 	last: 0,
@@ -36,7 +34,7 @@ module.exports = {
 	getPos() {
 		return this.pos;
 	},
-	
+
 	getPercent() {
 		return this.percent;
 	},
@@ -52,7 +50,7 @@ module.exports = {
 		this._data.ease = ease || 0.2;
 
 		// Bind functions and register event listeners
-		utils.bind(this, ['_setScroll', '_calcSpeed', '_calcPercent', 'getPos', 'getPercent', 'getSpeed', ]);
+		require("../Functions/bind")(this, ['_setScroll', '_calcSpeed', '_calcPercent', 'getPos', 'getPercent', 'getSpeed',]);
 		window.addEventListener("scroll", this._setScroll, false);
 
 		// OPTIONAL: Calculate Scroll speed
@@ -83,7 +81,6 @@ module.exports = {
 
 	_calcPercent: function () {
 		let pct = this.pos / this._data.max;
-		pct = pct.toFixed(4);
-		this.percent = Number(pct);
+		this.percent = require("../Math/clamp")(require("../Math/round")(pct), 0, 1);
 	}
 }
