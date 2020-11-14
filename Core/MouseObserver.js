@@ -19,8 +19,6 @@
 *
 *************************************/
 
-const bind = require("../Functions/bind");
-
 module.exports = {
 	pos: {
 		x: 0,
@@ -51,11 +49,11 @@ module.exports = {
 
 		this._data.ease = ease || 0.2;
 
-		bind(this, ['_setPos', '_calcSpeed', 'getSpeed', 'getPos']);
+		require("../Functions/bind")(this, ['_setPos', '_calcSpeed', 'getSpeed', 'getPos']);
 
 		document.addEventListener("mousemove", this._setPos)
 
-		if (speed) this._data.speedFn = raf.add(this._calcSpeed);
+		if (speed) this._data.speedFn = require("./raf").add(this._calcSpeed);
 	},
 
 	stop: function () {
@@ -64,7 +62,7 @@ module.exports = {
 		document.removeEventListener("mousemove", this._setPos)
 
 		// Reomve _calcSpeed from rendern queue
-		if (this._data.speedFn) this._data.speedFn = raf.remove(this._data.speedFn);
+		if (this._data.speedFn) this._data.speedFn = require("./raf").remove(this._data.speedFn);
 	},
 
 	_setPos: function () {
@@ -75,8 +73,8 @@ module.exports = {
 	},
 
 	_calcSpeed: function () {
-		this.last.x = M.lerp(this.last.x, this.pos.x, this._data.ease);
-		this.last.y = M.lerp(this.last.y, this.pos.y, this._data.ease);
+		this.last.x = require("../Math/lerp")(this.last.x, this.pos.x, this._data.ease);
+		this.last.y = require("../Math/lerp")(this.last.y, this.pos.y, this._data.ease);
 
 		if (this.last.x < .1) this.last.x = 0;
 		if (this.last.y < .1) this.last.y = 0;
