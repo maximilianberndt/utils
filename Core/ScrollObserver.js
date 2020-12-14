@@ -81,6 +81,6 @@ module.exports = {
 
 	_calcPercent: function () {
 		let pct = this.pos / this._data.max;
-		this.percent = require("../Math/clamp")(require("../Math/round")(pct), 0, 1);
+		this.percent = require("../Math/clamp")(require("../Math/round")(pct, 10000), 0, 1);
 	}
 }
