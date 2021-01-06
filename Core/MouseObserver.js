@@ -29,6 +29,7 @@ module.exports = {
 		y: 0
 	},
 	speed: 0,
+	hasMoved: false,
 
 	_data: {
 		speedFn: null,
@@ -66,6 +67,7 @@ module.exports = {
 	},
 
 	_setPos: function () {
+		this.hasMoved = true;
 		this.pos = {
 			x: event.clientX,
 			y: event.clientY
