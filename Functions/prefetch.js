@@ -1,7 +1,6 @@
 // Prefetch subsequent pages
 // TODO: Dom parse and select preload critical images
-
-module.exports = (links, prefetchMethod) => {
+export const prefetch = (links, prefetchMethod = "prefetch") => {
 
 	const supportedPrefetchStrategy = (support('prefetch') && prefetchMethod == "prefetch")
 		? linkPrefetchStrategy
@@ -10,7 +9,7 @@ module.exports = (links, prefetchMethod) => {
 	const linksL = links.length;
 
 	requestIdleCallback(() => {
-		for(let i = 0; i < linksL; i++) {
+		for (let i = 0; i < linksL; i++) {
 			prefetch(links[i])
 		}
 	}, { timeout: 23 });

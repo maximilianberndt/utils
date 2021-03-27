@@ -1,11 +1,11 @@
-module.exports = ({ el, fnIn = null, fnOut = null } = {}) => {
+export const io = ({ el, fnIn = null, fnOut = null } = {}) => {
 
 	const options = {
 		threshold: 0
 	}
 
 	// Triggers every time an intersection happens
-	let cb = (entries, observer) => {
+	const cb = (entries, observer) => {
 		if (entries[0].isIntersecting) {
 			// Element comes into the viewport
 			if (fnIn) fnIn()

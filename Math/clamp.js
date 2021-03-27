@@ -1,3 +1,1 @@
-module.exports = (v, a, z) => {
-	return Math.min(Math.max(v, a), z);
-}
+export const clamp = (v, a, z) => Math.min(Math.max(v, a), z)

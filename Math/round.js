@@ -1,3 +1,1 @@
-module.exports = (v, p = 1000) => {
-	return Math.round(v * p) / p
-}
+export const round = (v, p = 1000) => Math.round(v * p) / p

@@ -1,3 +1,1 @@
-module.exports = (a, z) => {
-	return Math.random() * (z - a) + a
-}
+export const rand = (a, z) => Math.random() * (z - a) + a

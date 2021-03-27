@@ -1,6 +1,7 @@
-const browser = require("./sniff-browser")
+import { map } from "../Math/map"
+import { sniffBrowser } from "./sniff-browser"
 
-module.exports = () => {
+export const getPerformance = () => {
 	let performance = 0;
 
 	const getPerfs = () => {
@@ -13,7 +14,7 @@ module.exports = () => {
 		return end - start
 	}
 
-	if (!browser.isMicrosoft) performance = require("../Math/map")((getPerfs(), 0, 22, 3, 0))
+	if (!sniffBrowser().isInternetExplorer) performance = map((getPerfs(), 0, 22, 3, 0))
 
 	return Math.round(performance)
 }

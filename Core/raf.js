@@ -1,5 +1,5 @@
-module.exports = {
-	_data: {
+export const raf = {
+	data: {
 		raf: undefined,
 		isRunning: false,
 	},
@@ -11,7 +11,7 @@ module.exports = {
 		if (!fn) return
 
 		let newFn = {
-			id: Math.round(require('../Math/rand')(1, 99999999)),
+			id: Date.now(),
 			fn
 		}
 
@@ -22,7 +22,7 @@ module.exports = {
 		this.renderQueueL = this.renderQueue.length;
 
 		// Start raf if it's not running yet
-		if (!this._data.isRunning) this._start();
+		if (!this.data.isRunning) this.start();
 
 		// Return the id so function can be removed later
 		return (newFn.id);
@@ -44,18 +44,17 @@ module.exports = {
 		this.renderQueueL = this.renderQueue.length;
 
 		// Stop raf 
-		if (this._data.isRunning && this.renderQueueL === 0) this._stop();
+		if (this.data.isRunning && this.renderQueueL === 0) this.stop();
 	},
 
-	_start: function () {
-		this._data.isRunning = true;
+	start: function () {
+		this.data.isRunning = true;
 		this.render();
 	},
 
-
-	_stop: function () {
-		this._data.isRunning = false;
-		window.cancelAnimationFrame(this._data.raf);
+	stop: function () {
+		this.data.isRunning = false;
+		window.cancelAnimationFrame(this.data.raf);
 	},
 
 	render: function () {
@@ -65,6 +64,6 @@ module.exports = {
 		}
 
 		// request another frame
-		this._data.raf = window.requestAnimationFrame(() => { this.render() });
+		this.data.raf = window.requestAnimationFrame(() => { this.render() });
 	}
 }
