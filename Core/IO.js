@@ -1,4 +1,4 @@
-export const io = ({ el, fnIn = null, fnOut = null } = {}) => {
+export const io = ({ el, fnIn = null, fnOut = null, once = false } = {}) => {
 
 	const options = {
 		threshold: 0
@@ -9,6 +9,7 @@ export const io = ({ el, fnIn = null, fnOut = null } = {}) => {
 		if (entries[0].isIntersecting) {
 			// Element comes into the viewport
 			if (fnIn) fnIn()
+			if (once) observer.unobserve(el)
 		} else {
 			// Element leaves the viewport 
 			if (fnOut) fnOut()
