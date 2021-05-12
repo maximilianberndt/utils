@@ -1,6 +1,6 @@
 import { raf } from "./raf"
 import { bind } from "../Functions/bind"
-import { lerp } from "../Functions/lerp"
+import { lerp } from "../Math/lerp"
 
 export const mouse = {
 	pos: {

@@ -1,4 +1,4 @@
-import { bind } from "../Math/bind"
+import { bind } from "../Functions/bind"
 import { clamp } from "../Math/clamp"
 import { round } from "../Math/round"
 import { raf } from "./raf"
