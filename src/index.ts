@@ -1,21 +1,19 @@
-// Core
-// export { io } from "./Core/io"
-// export { mouse } from "./Core/mouse"
-// export { raf } from "./Core/raf"
-// export { scroll } from "./Core/scroll"
-
-// // Functions
-// export { bind } from "./Functions/bind"
-// export { debounce } from "./Functions/debounce"
-// export { getPerformance } from "./Functions/get-performance"
-// export { prefetch } from "./Functions/prefetch"
-// export { sniffBrowser } from "./Functions/sniff-browser"
-// export { sniffMobile } from "./Functions/sniff-mobile"
-
-// // Math
-// export { clamp } from "./Math/clamp"
-// export { dist } from "./Math/dist"
-// export { lerp } from "./Math/lerp"
-// export { map } from "./Math/map"
-// export { rand } from "./Math/rand"
-// export { round } from "./Math/round"
+export { arrayPick } from './arrayPick'
+export { arrayShuffle } from './arrayShuffle'
+export { clamp } from './clamp'
+export { damp } from './damp'
+export { debounce } from './debounce'
+export { distance } from './distance'
+export { finiteStateMachine } from './finiteStateMachine'
+export { intersectionObserver } from './intersectionObserver'
+export { lerp } from './lerp'
+export { map } from './map'
+export { prefetch } from './prefetch'
+export { prng } from './prng'
+export { pythagorean } from './pythagorean'
+export { raf } from './raf'
+export { random } from './random'
+export { round } from './round'
+export { smootherstep } from './smootherstep'
+export { smoothstep } from './smoothstep'
+export { weightedList } from './weightedList'
