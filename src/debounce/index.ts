@@ -1,4 +1,4 @@
-const debounce = (fn: () => void, delayMS = 0) => {
+export const debounce = (fn: () => void, delayMS = 0) => {
   let dt
   return function () {
     const ctx = this
@@ -8,5 +8,3 @@ const debounce = (fn: () => void, delayMS = 0) => {
     dt = setTimeout(() => fn.apply(ctx, args), delayMS)
   }
 }
-
-export default debounce

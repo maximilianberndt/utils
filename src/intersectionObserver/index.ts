@@ -1,4 +1,4 @@
-const intersectionObserver = ({
+export const intersectionObserver = ({
   el,
   onEnter,
   onLeave,
@@ -38,5 +38,3 @@ const intersectionObserver = ({
 
   return observer
 }
-
-export default intersectionObserver

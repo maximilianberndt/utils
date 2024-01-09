@@ -29,7 +29,7 @@ const get = <T>(
   return items[items.length - 1].item
 }
 
-const weightedList = <T>(
+export const weightedList = <T>(
   initialItems: WeightedItem<T>[] = []
 ): WeightedList<T> => {
   const items: WeightedItem<T>[] = []

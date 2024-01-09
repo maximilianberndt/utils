@@ -9,7 +9,10 @@ function support(feature) {
   )
 }
 
-const prefetch = (links: string[], prefetchMethod = 'prefetch') => {
+export const prefetch = (
+  links: string[],
+  prefetchMethod = 'prefetch'
+) => {
   if (!links.length) return
 
   const supportedPrefetchStrategy =
@@ -81,5 +84,3 @@ const prefetch = (links: string[], prefetchMethod = 'prefetch') => {
     )
   }
 }
-
-export default prefetch

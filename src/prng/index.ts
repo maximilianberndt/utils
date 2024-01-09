@@ -30,6 +30,5 @@ function mulberry32(a) {
     const generator = prng("Your seed")
     console.log(generator()) //0.093 <-- will be same for every time the seed is called 
 */
-const prng = (seed = `${Date.now()}`) => mulberry32(xmur3(seed)())
-
-export default prng
+export const prng = (seed = `${Date.now()}`) =>
+  mulberry32(xmur3(seed)())

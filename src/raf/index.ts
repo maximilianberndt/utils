@@ -42,6 +42,4 @@ const add = (callback: Callback): void => {
   !isRunning && startRaf()
 }
 
-const raf = { add, remove }
-
-export default raf
+export const raf = { add, remove }
