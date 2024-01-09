@@ -1,6 +1,6 @@
 {
   "name": "@maaax/utils",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "description": "Collection of utility functions",
   "main": "index.js",
   "scripts": {
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/maximilianberndt/utils/issues"
   },
-  "homepage": "https://github.com/maximilianberndt/utils#readme"
+  "homepage": "https://github.com/maximilianberndt/utils#readme",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
 }

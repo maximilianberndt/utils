@@ -1,1 +1,0 @@
-export const map = (v, a, z, b, y) => b + (y - b) * ((v - a) / (z - a))
