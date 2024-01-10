@@ -35,11 +35,14 @@ const remove = (callback: Callback): void => {
   isRunning && !renderQueue.length && stopRaf()
 }
 
-const add = (callback: Callback): void => {
+export const raf = (
+  callback: Callback
+): ((callback: Callback) => void) => {
   renderQueue.push(callback)
 
   // Start raf if it's not running yet
   !isRunning && startRaf()
-}
 
-export const raf = { add, remove }
+  // Return remove function for easier destroy
+  return () => remove(callback)
+}
