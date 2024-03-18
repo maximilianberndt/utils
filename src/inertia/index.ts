@@ -1,26 +1,24 @@
-type Options = {
-  start: number
-  friction: number
-}
-
 interface Inertia {
-  update: (acceleration?: number) => void
+  update: () => void
+  add: (delta: number) => void
   get: () => number
-  getDelta: () => number
 }
 
 export const inertia = ({
   start = 0,
   friction = 0.97,
-}: Options): Inertia => {
+}: {
+  start: number
+  friction: number
+}): Inertia => {
   let last = start
   let value = start
   let velocity = 0
 
-  const update = (acceleration = 0): void => {
+  // Update every frame
+  const update = () => {
     last = value
 
-    velocity += acceleration
     velocity *= friction
     value += velocity
   }
@@ -28,6 +26,8 @@ export const inertia = ({
   return {
     update,
     get: () => value,
-    getDelta: () => value - last,
+    add: (delta = 0) => {
+      velocity += delta
+    },
   }
 }

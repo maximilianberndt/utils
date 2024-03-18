@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/maximilianberndt/utils#readme",
   "devDependencies": {
-    "typescript": "^5.1.6"
+    "typescript": "^5.4.2"
   }
 }
