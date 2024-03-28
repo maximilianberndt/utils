@@ -1,7 +1,8 @@
-interface Inertia {
+export interface Inertia {
   update: () => void
   add: (delta: number) => void
   get: () => number
+  setFriction: (friction: number) => void
 }
 
 export const inertia = ({
@@ -11,23 +12,26 @@ export const inertia = ({
   start: number
   friction: number
 }): Inertia => {
-  let last = start
-  let value = start
-  let velocity = 0
+  const data = {
+    value: start,
+    velocity: 0,
+    friction,
+  }
 
   // Update every frame
   const update = () => {
-    last = value
-
-    velocity *= friction
-    value += velocity
+    data.velocity *= data.friction
+    data.value += data.velocity
   }
 
   return {
     update,
-    get: () => value,
+    get: () => data.value,
     add: (delta = 0) => {
-      velocity += delta
+      data.velocity += delta
+    },
+    setFriction: (friction) => {
+      data.friction = friction
     },
   }
 }
