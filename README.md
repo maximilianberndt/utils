@@ -21,14 +21,14 @@ clamp(value, 0, 10) // 10
 
 ```
 const value = 10;
-lerpdamp(value, 50, 0.4, deltaTime) // 26
+damp(value, 50, 0.4, deltaTime) // 26
 ```
 
 **debounce** Will only trigger function when it has not been invoked in given timeframe
 
 ```
 const onResize = () => { console.log(window.innerWidth) }
-document.addEventListener("resize", debounce(onResize, 250))
+document.addEventListener("resize", debounce(onResize, 250)) // Will be called on resize every 250ms
 ```
 
 **distance** Distance between two points using pythagoras theorem
@@ -118,9 +118,21 @@ setTimeout(remove, 1000)
 const value = random(0, 100)
 ```
 
-**randomGaussian**
+**randomBool** Randomly returns true or false
+
 ```
-TODO: document
+randomBool()
+```
+
+**randomInt** Returns a random integer in between two values
+
+```
+randomInt(0, 10) // 3
+```
+
+**randomGaussian** Random number that more likely returns the medium of the standard deviation to more closely mimic a natural randomness
+```
+randomGaussian(1) // Returns a value between 1 and -1
 ```
 
 **round** Round to given decimal
@@ -145,18 +157,17 @@ TODO: document
 // Create spring
 const spring = createSpring(0, { stiffness: 0.2, damping: 0.4, mass: 1.2 } )
 
-const tick = () => {
-  // Update spring every tick
-  spring.update()
+rad.add(() => {
+	// Update spring every tick
+	spring.update()
 
-  // Get value
-  console.log(spring.get())
-}
-rad.add(tick)
+	// Get value
+	console.log(spring.get())
+})
 
 window.addEventListner("mousemove", (e) => {
-  // Set target value
-  spring.set(e.clientX)
+	// Set target value
+	spring.set(e.clientX)
 })
 ```
 
