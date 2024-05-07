@@ -23,12 +23,5 @@ function mulberry32(a) {
   }
 }
 
-/*
-    Generate a pseudo random number between 0 and 1 based on a seed
-
-    #Usage:
-    const generator = prng("Your seed")
-    console.log(generator()) //0.093 <-- will be same for every time the seed is called 
-*/
 export const prng = (seed = `${Date.now()}`) =>
   mulberry32(xmur3(seed)())
