@@ -52,10 +52,10 @@ fract(10.2) // 2
 const value = inertia(0)
 
 rad.add(() => {
-	value.update()
+  value.update()
 
-	// Get value
-	consol.log(value.get())
+  // Get value
+  consol.log(value.get())
 })
 
 window.addEventListner("mousemove", (e) => {
@@ -158,16 +158,16 @@ TODO: document
 const spring = createSpring(0, { stiffness: 0.2, damping: 0.4, mass: 1.2 } )
 
 rad.add(() => {
-	// Update spring every tick
-	spring.update()
+  // Update spring every tick
+  spring.update()
 
-	// Get value
-	console.log(spring.get())
+  // Get value
+  console.log(spring.get())
 })
 
 window.addEventListner("mousemove", (e) => {
-	// Set target value
-	spring.set(e.clientX)
+  // Set target value
+  spring.set(e.clientX)
 })
 ```
 
@@ -175,8 +175,8 @@ window.addEventListner("mousemove", (e) => {
 
 ```
 const list = weightedList([
- { item: "Option 1", weight: 9 },
- { item: "Option 2", weight: 1 }
+  { item: "Option 1", weight: 9 },
+  { item: "Option 2", weight: 1 }
 ])
 
 list.get() // 9 out of 10 times will return "Option 1"
