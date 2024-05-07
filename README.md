@@ -37,6 +37,9 @@ distance({ x: 0, y: 2 }, { x: 1, y: -2}) // 4.123
 ```
 
 **finiteStateMachine** 
+```
+TODO: document
+```
 
 **fract** Loop a value between 0 and 1
 ```
@@ -44,7 +47,27 @@ fract(10.2) // 2
 ```
 
 **inertia** 
+```
+// Create inertia value
+const value = inertia(0)
+
+rad.add(() => {
+	value.update()
+
+	// Get value
+	consol.log(value.get())
+})
+
+window.addEventListner("mousemove", (e) => {
+  // Add delta
+  value.add(e.clientX - value.get())
+})
+```
+
 **intersectionObserver** 
+```
+TODO: document
+```
 
 **lerp** Linear interpolation between two known points.
 
@@ -96,6 +119,9 @@ const value = random(0, 100)
 ```
 
 **randomGaussian**
+```
+TODO: document
+```
 
 **round** Round to given decimal
 
@@ -105,18 +131,44 @@ round(value, 1000) // 10.456
 ```
 
 **smoothstep** 
+```
+TODO: document
+```
+
 **smootherstep**
+```
+TODO: document
+```
+
 **spring** 
+```
+// Create spring
+const spring = createSpring(0, { stiffness: 0.2, damping: 0.4, mass: 1.2 } )
+
+const tick = () => {
+  // Update spring every tick
+  spring.update()
+
+  // Get value
+  console.log(spring.get())
+}
+rad.add(tick)
+
+window.addEventListner("mousemove", (e) => {
+  // Set target value
+  spring.set(e.clientX)
+})
+```
 
 **weightedList**
 
 ```
 const list = weightedList([
-	{ item: "Option 1", weight: 9 },
-	{ item: "Option 2", weight: 1 }
+ { item: "Option 1", weight: 9 },
+ { item: "Option 2", weight: 1 }
 ])
 
-list.get() // 9 out of 10 times will return Option 9
+list.get() // 9 out of 10 times will return "Option 1"
 ```
 
 
