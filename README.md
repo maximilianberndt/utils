@@ -1,13 +1,13 @@
 **arrayPick** Randomly pick a value from an array
 
 ```
-arrayPick([1,2,3])
+arrayPick([1,2,3]) // 2
 ```
 
-**arrayShuffle** Randomly pick a value from an array
+**arrayShuffle** Randomly shuffle an array
 
 ```
-arrayShuffle([1,2,3])
+arrayShuffle([1, 2, 3]) // [2, 1, 3]
 ```
 
 **clamp** Clamps a value between an upper and lower bound.
@@ -38,12 +38,30 @@ distance({ x: 0, y: 2 }, { x: 1, y: -2}) // 4.123
 
 **finiteStateMachine** 
 ```
-TODO: document
+// Create states
+const walkState = state({
+	name: "walk"
+	enter: () => console.log("enter"),
+})
+const runState = state({
+	name: "run"
+	exit: () => console.log("leave run"),
+	update: () => console.log("update run"),
+})
+
+// Create state machine
+const fsm = finiteStateMachine([walkState, runState])
+
+// Update on every tick
+raf.add(fsm.update)
+
+// Change current state
+fsm.setState("run")
 ```
 
 **fract** Loop a value between 0 and 1
 ```
-fract(10.2) // 2
+fract(10.2) // 0.2
 ```
 
 **inertia** 
