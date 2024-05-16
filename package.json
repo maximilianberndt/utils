@@ -1,6 +1,6 @@
 {
   "name": "@maaax/utils",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Collection of utility functions",
   "main": "./src/index.ts",
   "scripts": {
