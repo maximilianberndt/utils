@@ -27,7 +27,7 @@ const remove = (callback: RafCallback) => {
   if (!renderQueue.length) cancelAnimationFrame(rafId)
 }
 
-const raf = (callback: RafCallback) => {
+export const raf = (callback: RafCallback) => {
   if (!renderQueue.length) startRaf()
   renderQueue.push(callback)
 
