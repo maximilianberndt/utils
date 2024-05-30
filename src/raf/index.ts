@@ -4,7 +4,7 @@ let rafId = 0
 let now = 0
 let renderQueue: RafCallback[] = []
 
-const tick = (t = 0): void => {
+const tick = (t = 0) => {
   rafId = requestAnimationFrame(tick)
 
   let deltaTime = t - now
@@ -17,24 +17,19 @@ const tick = (t = 0): void => {
   renderQueue.forEach((callback) => callback(t, deltaTime))
 }
 
-const startRaf = (): void => {
+const startRaf = () => {
   now = performance.now()
   tick()
 }
 
-const stopRaf = (): void => {
-  cancelAnimationFrame(rafId)
-}
-
-const remove = (callback: RafCallback): void => {
+const remove = (callback: RafCallback) => {
   renderQueue = renderQueue.filter((c) => c !== callback)
-  !renderQueue.length && stopRaf()
+  if (!renderQueue.length) cancelAnimationFrame(rafId)
 }
 
-const raf = (callback: RafCallback): (() => void) => {
+const raf = (callback: RafCallback) => {
   if (!renderQueue.length) startRaf()
   renderQueue.push(callback)
 
-  // Return remove function for easier destroy
   return () => remove(callback)
 }
