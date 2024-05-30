@@ -31,9 +31,7 @@ const remove = (callback: RafCallback): void => {
   !renderQueue.length && stopRaf()
 }
 
-const raf = (
-  callback: RafCallback
-): ((callback: RafCallback) => void) => {
+const raf = (callback: RafCallback): (() => void) => {
   if (!renderQueue.length) startRaf()
   renderQueue.push(callback)
 
