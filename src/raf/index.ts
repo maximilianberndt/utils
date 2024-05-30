@@ -1,9 +1,8 @@
-export type Callback = (t: number, deltaTime: number) => any
+type RafCallback = (t: number, deltaTime: number) => any
 
 let rafId = 0
 let now = 0
-let isRunning = false
-let renderQueue: Callback[] = []
+let renderQueue: RafCallback[] = []
 
 const tick = (t = 0): void => {
   rafId = requestAnimationFrame(tick)
@@ -19,29 +18,24 @@ const tick = (t = 0): void => {
 }
 
 const startRaf = (): void => {
-  isRunning = true
   now = performance.now()
   tick()
 }
 
 const stopRaf = (): void => {
-  isRunning = false
   cancelAnimationFrame(rafId)
 }
 
-const remove = (callback: Callback): void => {
+const remove = (callback: RafCallback): void => {
   renderQueue = renderQueue.filter((c) => c !== callback)
-
-  isRunning && !renderQueue.length && stopRaf()
+  !renderQueue.length && stopRaf()
 }
 
-export const raf = (
-  callback: Callback
-): ((callback: Callback) => void) => {
+const raf = (
+  callback: RafCallback
+): ((callback: RafCallback) => void) => {
+  if (!renderQueue.length) startRaf()
   renderQueue.push(callback)
-
-  // Start raf if it's not running yet
-  !isRunning && startRaf()
 
   // Return remove function for easier destroy
   return () => remove(callback)
