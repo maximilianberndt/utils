@@ -32,11 +32,13 @@ document.addEventListener("resize", debounce(onResize, 250)) // Will be called o
 ```
 
 **distance** Distance between two points using pythagoras theorem
+
 ```
 distance({ x: 0, y: 2 }, { x: 1, y: -2}) // 4.123
 ```
 
-**finiteStateMachine** 
+**finiteStateMachine**
+
 ```
 // Create states
 const walkState = state({
@@ -60,11 +62,13 @@ fsm.setState("run")
 ```
 
 **fract** Loop a value between 0 and 1
+
 ```
 fract(10.2) // 0.2
 ```
 
-**inertia** 
+**inertia**
+
 ```
 // Create inertia value
 const value = inertia(0)
@@ -82,7 +86,8 @@ window.addEventListner("mousemove", (e) => {
 })
 ```
 
-**intersectionObserver** 
+**intersectionObserver**
+
 ```
 TODO: document
 ```
@@ -102,9 +107,19 @@ map(value, 0, 10, 3, 20) // 11.5
 ```
 
 **objectPool** Declare items once and then reuse them
+
 ```
 const objects = objectPool([...Array(10)].map(new AnimatedLine))
 objects.getNext() // will get the next object in the pool, once at the end, will get the first again
+```
+
+**pipe** Pass the result of one function to the next, creating a clean and readable pipeline
+
+```
+const add = (x) => x + 1;
+const multiply = (x) => x * 2;
+
+const result = pipe(add, multiply)(5); // 12
 ```
 
 **prefetch** Prefectch a page, waits until the main thread is idle
@@ -117,7 +132,7 @@ prefetch(["/about.html", "/contact.html"])
 
 ```
 const generator = prng("Your seed")
-console.log(generator()) // 0.093 - will be same for every time the seed is called 
+console.log(generator()) // 0.093 - will be same for every time the seed is called
 ```
 
 **raf** Central request animation frame loop, that starts and cancels itself.
@@ -149,6 +164,7 @@ randomInt(0, 10) // 3
 ```
 
 **randomGaussian** Random number that more likely returns the medium of the standard deviation to more closely mimic a natural randomness
+
 ```
 randomGaussian(1) // Returns a value between 1 and -1
 ```
@@ -160,17 +176,20 @@ const value = 10.4567890
 round(value, 1000) // 10.456
 ```
 
-**smoothstep** 
+**smoothstep**
+
 ```
 TODO: document
 ```
 
 **smootherstep**
+
 ```
 TODO: document
 ```
 
-**spring** 
+**spring**
+
 ```
 // Create spring
 const spring = createSpring(0, { stiffness: 0.2, damping: 0.4, mass: 1.2 } )
@@ -199,5 +218,3 @@ const list = weightedList([
 
 list.get() // 9 out of 10 times will return "Option 1"
 ```
-
-
