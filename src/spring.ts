@@ -1,16 +1,16 @@
-interface Config {
+export interface SpringConfig {
   stiffness: number
   damping: number
   mass: number
 }
 
-interface Spring {
+export interface Spring {
   update: () => void
   get: () => number
   set: (newTarget: number) => void
 }
 
-interface ArraySpring {
+export interface ArraySpring {
   update: Spring['update']
   set: Spring['set']
   get: () => number[]
@@ -18,7 +18,7 @@ interface ArraySpring {
 
 const createDefaultSpring = (
   start = 0,
-  { stiffness, damping, mass }: Config
+  { stiffness, damping, mass }: SpringConfig
 ): Spring => {
   let current = start
   let previous = start
@@ -40,7 +40,7 @@ const createDefaultSpring = (
 
 const createArraySpring = (
   start = [0],
-  config: Config
+  config: SpringConfig
 ): ArraySpring => {
   const springs = start.map((v) => createDefaultSpring(v, config))
 
@@ -55,7 +55,7 @@ const createArraySpring = (
 export const createSpring = (
   start = 0,
   { stiffness = 0.1, damping = 0.8, mass = 1 } = {}
-): (Spring | ArraySpring) & { config: Config } => {
+): (Spring | ArraySpring) & { config: SpringConfig } => {
   const spring = Array.isArray(start)
     ? createArraySpring(start, { stiffness, damping, mass })
     : createDefaultSpring(start, { stiffness, damping, mass })

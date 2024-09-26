@@ -1,4 +1,4 @@
-import { clamp } from '../clamp'
+import { clamp } from './clamp'
 
 // http://en.wikipedia.org/wiki/Smoothstep
 export const smoothstep = (x = 0, min = 0, max = 1) => {

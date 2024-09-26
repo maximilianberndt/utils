@@ -57,7 +57,7 @@ export const prefetch = (
           // TODO: Dom parse and select preload critical images
           console.log(response)
 
-          resolve()
+          resolve(response)
         } else {
           reject()
         }

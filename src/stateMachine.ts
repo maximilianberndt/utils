@@ -12,7 +12,7 @@ export const state = ({
   update = () => null,
 }: Partial<State>): State => ({ name, enter, exit, update })
 
-interface StateMachine {
+export interface StateMachine {
   hasState: (name: State['name']) => boolean
   addState: (state: State) => void
   setState: (name: State['name']) => void
@@ -20,7 +20,7 @@ interface StateMachine {
   currentState: () => State | null
 }
 
-export const finiteStateMachine = (
+export const stateMachine = (
   initialStates: State[] = []
 ): StateMachine => {
   let currentState: State | null = null

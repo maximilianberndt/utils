@@ -1,4 +1,4 @@
-type RafCallback = (t: number, deltaTime: number) => any
+export type RafCallback = (t: number, deltaTime: number) => any
 
 let rafId = 0
 let now = 0

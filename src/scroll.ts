@@ -15,7 +15,7 @@ const stop = () => {
   window.removeEventListener('scroll', globalOnScroll)
 }
 
-const addCallback = (callback: scrollCallback) => {
+export const addScrollCallback = (callback: scrollCallback) => {
   if (!callbacks.length) start()
   callbacks.push(callback)
 
@@ -26,7 +26,7 @@ const addCallback = (callback: scrollCallback) => {
 }
 
 export const onScroll = (callback: scrollCallback) => {
-  const removeCallback = addCallback(callback)
+  const removeCallback = addScrollCallback(callback)
 
   return () => removeCallback()
 }

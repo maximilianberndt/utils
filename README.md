@@ -37,7 +37,7 @@ document.addEventListener("resize", debounce(onResize, 250)) // Will be called o
 distance({ x: 0, y: 2 }, { x: 1, y: -2}) // 4.123
 ```
 
-**finiteStateMachine**
+**stateMachine**
 
 ```
 // Create states
@@ -52,7 +52,7 @@ const runState = state({
 })
 
 // Create state machine
-const fsm = finiteStateMachine([walkState, runState])
+const fsm = stateMachine([walkState, runState])
 
 // Update on every tick
 raf.add(fsm.update)
